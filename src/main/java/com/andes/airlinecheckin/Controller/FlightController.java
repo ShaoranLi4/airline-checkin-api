@@ -12,6 +12,7 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
 
+    // ✅ ÚNICO ENDPOINT - Ya funciona perfectamente
     @GetMapping("/{id}/passengers")
     public FlightResponse getPassengers(@PathVariable("id") int flightId) {
         return flightService.getFlightWithPassengers(flightId);

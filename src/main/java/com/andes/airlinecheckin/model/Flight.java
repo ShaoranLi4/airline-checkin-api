@@ -1,13 +1,30 @@
 package com.andes.airlinecheckin.model;
 
+import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Entity
+@Table(name = "flight") // Asegúrate que coincida con el nombre de la tabla
 public class Flight {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "flight_id") // Esto mapea con la columna de la BD
     private Integer flightId;
+
+    @Column(name = "takeoff_date_time") // Nombre exacto de la columna
     private Long takeoffDateTime;
+
+    @Column(name = "takeoff_airport")
     private String takeoffAirport;
+
+    @Column(name = "landing_date_time")
     private Long landingDateTime;
+
+    @Column(name = "landing_airport")
     private String landingAirport;
+
+    @Column(name = "airplane_id")
     private Integer airplaneId;
 
     // Constructores
@@ -23,7 +40,7 @@ public class Flight {
         this.airplaneId = airplaneId;
     }
 
-    // Getters y Setters
+    // Getters y Setters (mantén las anotaciones @JsonProperty para JSON)
     @JsonProperty("flightId")
     public Integer getFlightId() { return flightId; }
     public void setFlightId(Integer flightId) { this.flightId = flightId; }
